@@ -35,12 +35,12 @@ ${dataMenu.map((operation) =>`${operation.code} - ${operation.description}`).joi
         const operation = dataMenu.find((operation) => operation.code === inputOperation);
 
         if (!operation) {
-            console.log("Operação não existe, por favor, escolha uma opção válida: ");
+            console.log("\nOperação não existe, por favor, escolha uma opção válida: ");
             continue;
         }
 
         if (operation?.code === 9) {
-            console.log("Banco do Brazil com Z - O seu Futuro começa aqui!");
+            console.log("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
             about();
             process.exit(0);
         }
