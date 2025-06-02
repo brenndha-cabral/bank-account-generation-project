@@ -83,5 +83,3 @@ ${dataMenu.map((operation) =>`${operation.code} - ${operation.description}`).joi
         }
     }
 };
-
-main();
