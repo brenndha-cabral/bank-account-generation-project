@@ -16,5 +16,10 @@
     "url": "https://github.com/brenndha-cabral/bank-account-generation-project/issues"
   },
   "homepage": "https://github.com/brenndha-cabral/bank-account-generation-project#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.15.29",
+    "@types/readline-sync": "^1.4.8",
+    "readline-sync": "^1.4.10"
+  }
 }
