@@ -39,10 +39,12 @@ ${dataMenu.map((operation) =>`${operation.code} - ${operation.description}`).joi
             continue;
         }
 
-        if (operation?.code === 9) {
+        if (operation.code === 9) {
             console.log("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
             about();
             process.exit(0);
+            /* encerra o programa manualmente (se houver código abaixo fora do escopo não vai mais rodar, e o arg é um código de saída
+             o 0 por exemplo significa saída sem erros, se fosse 1 seria com erro genérico e existem outros códigos também) */
         }
 
         switch (operation.code) {
