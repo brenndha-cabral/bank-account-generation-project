@@ -45,11 +45,20 @@ Este repositório é focado em **aprendizado e prática** e é atualizado consta
 
 ```plaintext
 📁 bank-account-generation-project
-├── 📄 index.ts            
-├── 📁 src/               
-│   ├── 📄 about.ts     
-│   └── 📄 menu.ts        
-└── 📄 README.md          
+├── 📁 src
+│   ├── 📁 models
+│   │   ├── 📄 Account.ts
+│   ├── 📁 utils
+│   │   └── 📄 about.ts
+│   │   └── 📄 dataTypesAccount.ts
+│   │   └── 📄 dataMenu.ts
+│   └── 📄 Menu.ts
+├── 📄 Index.ts
+├── 📄 .gitignore
+├── 📄 package-lock.json
+├── 📄 package.json
+└── 📄 README.md
+├── 📄 tsconfig.json
 ```
 
 ---

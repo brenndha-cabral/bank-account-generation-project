@@ -1,4 +1,4 @@
-import { dataTypesAccount } from "../utils/dataAccountsTypes";
+import { dataTypesAccount } from "../utils/dataTypesAccounts";
 
 export class Account {
     private _number: number;
