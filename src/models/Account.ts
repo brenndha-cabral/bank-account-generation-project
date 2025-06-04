@@ -1,6 +1,6 @@
 import { dataTypesAccount } from "../utils/dataTypesAccounts";
 
-export class Account {
+export abstract class Account {
     private _number: number;
     private _agency: number;
     private _type: number;

@@ -2,18 +2,28 @@ import read from "readline-sync";
 import { about } from "./utils/about";
 import { Account } from "./models/Account";
 import { dataMenu } from "./utils/dataMenu";
+import { CurrencyAccount } from "./models/CurrencyAccount";
+import { SalvingAccount } from "./models/SalvingAccount";
 
 export function main() {
 
     let inputOperation: number;
-    const account: Account = new Account(1, 123, 1, "Adriana", 10000);
 
-    account.view();
-    account.withdraw(10500);
-    account.withdraw(600);
-    account.view();
-    account.deposit(5000);
-    account.view();
+    const currencyAccount: CurrencyAccount = new CurrencyAccount(2, 123, 1, "Mariana", 15000, 1000);
+
+    currencyAccount.view();
+    currencyAccount.withdraw(2000);
+    currencyAccount.view();
+    currencyAccount.deposit(1000);
+    currencyAccount.view();
+
+    const salvingAccount: SalvingAccount = new SalvingAccount(3, 123, 2, "Victor", 1000, 10);
+
+    salvingAccount.view();
+    salvingAccount.withdraw(200);
+    salvingAccount.view();
+    salvingAccount.deposit(1000);
+    salvingAccount.view();
 
     while (true) {
 
