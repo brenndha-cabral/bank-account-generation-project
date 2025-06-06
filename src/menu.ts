@@ -1,6 +1,5 @@
 import read from "readline-sync";
 import { about } from "./utils/about";
-// import { Account } from "./models/Account";
 import { dataMenu } from "./utils/dataMenu";
 import { CurrencyAccount } from "./models/CurrencyAccount";
 import { SalvingAccount } from "./models/SalvingAccount";
