@@ -11,7 +11,7 @@ export function main() {
 
     let inputOperation: number;
     let accounts: AccountController = new AccountController();
-    let option, number, agency, type, balance, specialLimit, birthday, value, destinyNumber: number;
+    let number, agency, type, balance, specialLimit, birthday, value, destinyNumber: number;
     let holder: string;
 
 
