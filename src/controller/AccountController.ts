@@ -48,7 +48,14 @@ export class AccountController implements IAccountRepository {
         }
     }
     deleteAccount(number: number): void {
-        throw new Error("Method not implemented.");
+        let accountById = this.listAccounts.find((account) => account.number === number);
+
+        if (accountById && accountById !== undefined) {
+            this.listAccounts.splice(this.listAccounts.indexOf(accountById), 1);
+            console.log(`A conta número: ${number} foi apagada com sucesso!`);
+        } else {
+            console.log(`A conta número: ${number} não foi encontrada!`);
+        }
     }
     withdraw(number: number, value: number): void {
         throw new Error("Method not implemented.");

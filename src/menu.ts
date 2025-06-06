@@ -134,16 +134,16 @@ ${dataTypesAccount.map((type) => `${type.code} - ${type.description}`).join('\n'
                         case 1:
                             console.log("Digite o limite do cheque especial da conta (R$): ");
                             specialLimit = read.questionFloat();
-                            accounts.registerAccount(
-                                new CurrencyAccount(accounts.generateIdAccount(), agency, type, holder, balance, specialLimit)
+                            accounts.updateAccount(
+                                new CurrencyAccount(number, agency, type, holder, balance, specialLimit)
                             );
                             break;
                         
                         case 2:
                             console.log("Digite o dia do aniversário da conta poupança: ");
                             birthday = read.questionInt();
-                            accounts.registerAccount(
-                                new SalvingAccount(accounts.generateIdAccount(), agency, type, holder, balance, birthday)
+                            accounts.updateAccount(
+                                new SalvingAccount(number, agency, type, holder, balance, birthday)
                             );
                             break;
                     }
@@ -155,6 +155,9 @@ ${dataTypesAccount.map((type) => `${type.code} - ${type.description}`).join('\n'
             
             case 5:
                 console.log(`\n${operation.description}`);
+                console.log("Digite o número da conta: ")
+                number = read.questionInt("");
+                accounts.deleteAccount(number);
                 break;
             
             case 6:
