@@ -11,7 +11,7 @@ export function main() {
 
     let inputOperation: number;
     let accounts: AccountController = new AccountController();
-    let option, number, agency, type, balance, specialLimit, birthday: number;
+    let option, number, agency, type, balance, specialLimit, birthday, value, destinyNumber: number;
     let holder: string;
 
 
@@ -150,7 +150,6 @@ ${dataTypesAccount.map((type) => `${type.code} - ${type.description}`).join('\n'
                 } else {
                     console.log(`A conta número: ${number} não foi encontrada!`);
                 }
-
                 break;
             
             case 5:
@@ -162,10 +161,24 @@ ${dataTypesAccount.map((type) => `${type.code} - ${type.description}`).join('\n'
             
             case 6:
                 console.log(`\n${operation.description}`);
+                console.log("Digite o número da conta: ");
+                number = read.questionInt();
+
+                console.log("Digite o valor do saque (R$): ");
+                value = read.questionFloat();
+
+                accounts.withdraw(number, value);
                 break;
             
             case 7:
                 console.log(`\n${operation.description}`);
+                console.log("Digite o número da conta: ");
+                number = read.questionInt();
+
+                console.log("Digite o valor do depósito (R$): ");
+                value = read.questionFloat();
+
+                accounts.deposit(number, value);
                 break;
             
             case 8:

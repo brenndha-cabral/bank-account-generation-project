@@ -11,16 +11,15 @@ export class AccountController implements IAccountRepository {
         return ++ this.idAccount;
     }
 
+    private accountById(number: number): Account | undefined {
+        return this.listAccounts.find((account) => account.number === number);
+    }
+
     findAccountByNumber(id: number, returnAccount: boolean = false): void | Account {
-        // for (let account of this.listAccounts) {
-        //     if (account.number === id) return account
-        // }
 
-        // return null;
+        let accountById = this.accountById(id);
 
-        let accountById = this.listAccounts.find((account) => account.number === id);
-
-        if (returnAccount) return accountById; // Esse parâmetro acional e opcional foi feito para fazer o update para não criar o método auxiliar buscarNoArray já que o findAccountByNumber supre a necessidade e está no seu escopo
+        if (returnAccount) return accountById; // Esse parâmetro adicional e opcional foi feito para fazer o update para não criar o método auxiliar buscarNoArray já que o findAccountByNumber supre a necessidade e está no seu escopo
 
         if (accountById && accountById !== undefined) {
             accountById.view();
@@ -28,17 +27,20 @@ export class AccountController implements IAccountRepository {
             console.log(`A conta número: ${id} não foi encontrada!`);
         }
     }
+
     listAllAccounts(): void {
         for (let account of this.listAccounts) {
             account.view();
         }
     }
+
     registerAccount(account: Account): void {
         this.listAccounts.push(account);
         console.log(`A conta número: ${account.number} foi criada com sucesso!`);
     }
+
     updateAccount(account: Account): void {
-        let accountById = this.listAccounts.find((a) => a.number === account.number);
+        let accountById = this.accountById(account.number);
 
         if (accountById && accountById !== undefined) {
             this.listAccounts[this.listAccounts.indexOf(accountById)] = account;
@@ -47,8 +49,9 @@ export class AccountController implements IAccountRepository {
             console.log(`A conta número: ${account.number} não foi encontrada!`);
         }
     }
+
     deleteAccount(number: number): void {
-        let accountById = this.listAccounts.find((account) => account.number === number);
+        let accountById = this.accountById(number);
 
         if (accountById && accountById !== undefined) {
             this.listAccounts.splice(this.listAccounts.indexOf(accountById), 1);
@@ -57,12 +60,33 @@ export class AccountController implements IAccountRepository {
             console.log(`A conta número: ${number} não foi encontrada!`);
         }
     }
+
     withdraw(number: number, value: number): void {
-        throw new Error("Method not implemented.");
+        let account = this.accountById(number);
+
+        if (!!account) {
+            account.withdraw(value) && console.log(`Saque na conta número ${number} foi efetuado com sucesso!`);
+        } else {
+            console.log(`A conta número ${number} não foi encontrada!`);
+        }
     }
+
     deposit(number: number, value: number): void {
-        throw new Error("Method not implemented.");
+        if (value <= 0) {
+            console.log("Valor do depósito menor ou igual a zero! Por gentileza, inserir um valor válido!");
+        } else {
+            let account = this.accountById(number);
+            
+            if (!!account) {
+                account.deposit(value);
+                console.log(`Depósito na conta número ${number} foi efetuado com sucesso!`);
+            } else {
+                console.log(`A conta número ${number} não foi encontrada!`);
+            }
+        }
+
     }
+    
     transfer(originNumber: number, destinationNumber: number, value: number): void {
         throw new Error("Method not implemented.");
     }
