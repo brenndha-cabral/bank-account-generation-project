@@ -13,23 +13,24 @@ export function main() {
     let accounts: AccountController = new AccountController();
     let option, number, agency, type, balance, specialLimit, birthday: number;
     let holder: string;
-    // const typesAccounts = dataMenu
 
-    // const currencyAccount: CurrencyAccount = new CurrencyAccount(2, 123, 1, "Mariana", 15000, 1000);
 
-    // currencyAccount.view();
-    // currencyAccount.withdraw(2000);
-    // currencyAccount.view();
-    // currencyAccount.deposit(1000);
-    // currencyAccount.view();
+    // Teste de simulação para não ficar imputando na mão no console
+    console.log("\nCriar Contas\n");
 
-    // const salvingAccount: SalvingAccount = new SalvingAccount(3, 123, 2, "Victor", 1000, 10);
+    let cc1: CurrencyAccount = new CurrencyAccount(accounts.generateIdAccount(), 123, 1, "João da Silva", 1000, 100.0);
+    accounts.registerAccount(cc1);
 
-    // salvingAccount.view();
-    // salvingAccount.withdraw(200);
-    // salvingAccount.view();
-    // salvingAccount.deposit(1000);
-    // salvingAccount.view();
+    let cc2: CurrencyAccount = new CurrencyAccount(accounts.generateIdAccount(), 124, 1, "Maria da Silva", 2000, 100.0);
+    accounts.registerAccount(cc2);
+
+    let cp1: SalvingAccount = new SalvingAccount(accounts.generateIdAccount(), 125, 2, "Mariana dos Santos", 4000, 12);
+    accounts.registerAccount(cp1);
+
+    let cp2: SalvingAccount = new SalvingAccount(accounts.generateIdAccount(), 125, 2, "Juliana Ramos", 8000, 15);
+    accounts.registerAccount(cp2);
+    // Final do teste de simulação, esse trecho pode ser apagado depois se necessário
+
 
     while (true) {
 
@@ -104,10 +105,52 @@ ${dataTypesAccount.map((type) => `${type.code} - ${type.description}`).join('\n'
             
             case 3:
                 console.log(`\n${operation.description}`);
+                console.log("Digite o número da conta: ");
+                number = read.questionInt();
+                accounts.findAccountByNumber(number);
                 break;
             
             case 4:
                 console.log(`\n${operation.description}`);
+                console.log("Digite o número da conta: ");
+                number = read.questionInt();
+
+                let account = accounts.findAccountByNumber(number, true);
+
+                if (!!account) {
+                
+                    type = account.type;
+                
+                    console.log("Digite o número da agência: ")
+                    agency = read.questionInt();
+
+                    console.log("Digite o nome do titular da conta: ");
+                    holder = read.question();
+
+                    console.log("Digite o saldo da conta (R$): ");
+                    balance = read.questionFloat();
+
+                    switch (type) {
+                        case 1:
+                            console.log("Digite o limite do cheque especial da conta (R$): ");
+                            specialLimit = read.questionFloat();
+                            accounts.registerAccount(
+                                new CurrencyAccount(accounts.generateIdAccount(), agency, type, holder, balance, specialLimit)
+                            );
+                            break;
+                        
+                        case 2:
+                            console.log("Digite o dia do aniversário da conta poupança: ");
+                            birthday = read.questionInt();
+                            accounts.registerAccount(
+                                new SalvingAccount(accounts.generateIdAccount(), agency, type, holder, balance, birthday)
+                            );
+                            break;
+                    }
+                } else {
+                    console.log(`A conta número: ${number} não foi encontrada!`);
+                }
+
                 break;
             
             case 5:

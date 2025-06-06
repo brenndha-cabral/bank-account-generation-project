@@ -1,11 +1,11 @@
 import { Account } from "../models/Account";
 
 export interface IAccountRepository {
-    findAccountByNumber(number: number): void;
+    findAccountByNumber(id: number, returnAccount?: boolean): void | Account;
     listAllAccounts(): void;
     registerAccount(account: Account): void;
     updateAccount(account: Account): void;
-    deleteAccount(number: number): void;
+    deleteAccount(id: number): void;
 
     withdraw(number: number, value: number): void;
     deposit(number: number, value: number): void;

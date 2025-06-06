@@ -11,8 +11,22 @@ export class AccountController implements IAccountRepository {
         return ++ this.idAccount;
     }
 
-    findAccountByNumber(number: number): void {
-        throw new Error("Method not implemented.");
+    findAccountByNumber(id: number, returnAccount: boolean = false): void | Account {
+        // for (let account of this.listAccounts) {
+        //     if (account.number === id) return account
+        // }
+
+        // return null;
+
+        let accountById = this.listAccounts.find((account) => account.number === id);
+
+        if (returnAccount) return accountById; // Esse parâmetro acional e opcional foi feito para fazer o update para não criar o método auxiliar buscarNoArray já que o findAccountByNumber supre a necessidade e está no seu escopo
+
+        if (accountById && accountById !== undefined) {
+            accountById.view();
+        } else {
+            console.log(`A conta número: ${id} não foi encontrada!`);
+        }
     }
     listAllAccounts(): void {
         for (let account of this.listAccounts) {
@@ -24,7 +38,14 @@ export class AccountController implements IAccountRepository {
         console.log(`A conta número: ${account.number} foi criada com sucesso!`);
     }
     updateAccount(account: Account): void {
-        throw new Error("Method not implemented.");
+        let accountById = this.listAccounts.find((a) => a.number === account.number);
+
+        if (accountById && accountById !== undefined) {
+            this.listAccounts[this.listAccounts.indexOf(accountById)] = account;
+            console.log(`A conta número: ${account.number} foi atualizada com sucesso!`);
+        } else {
+            console.log(`A conta número: ${account.number} não foi encontrada!`);
+        }
     }
     deleteAccount(number: number): void {
         throw new Error("Method not implemented.");
