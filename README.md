@@ -8,10 +8,11 @@ Projeto em desenvolvimento contínuo com foco em lógica de programação, organ
 
 Construir, com TypeScript, um sistema de geração e gerenciamento de contas bancárias, com funcionalidades como:
 
-- Criação de contas com dados simulados
-- Listagem e busca de contas
-- Operações bancárias simuladas (futuramente)
-- Persistência simples em memória ou arquivo (futuramente)
+- Cadastro de clientes com nome e tipo de conta (corrente ou poupança)
+- Validação de tipos de conta
+- Geração de número de conta aleatório
+- Exibição de todas as contas criadas
+- Estrutura modular, separando responsabilidades por pastas e arquivos
 
 ---
 
@@ -31,13 +32,19 @@ Este repositório é focado em **aprendizado e prática** e é atualizado consta
 
 ---
 
-## 🧠 Aprendizados em andamento
+## 🧠 Aprendizados
 
-- Manipulação de arrays e objetos
-- Organização de código por responsabilidade
-- Modularização com `import`
-- Leitura e escrita em arquivos (futuramente)
-- Simulação de regras de negócio bancário
+- [x] Manipulação de arrays e objetos
+- [x] Organização de código por responsabilidade
+- [x] Modularização com `import`
+- [x] Leitura e escrita em arquivos (futuramente)
+- [x] Simulação de regras de negócio bancário
+- [x] Criação de conta bancária com dados validados
+- [x] Geração de número de conta único
+- [x] Simulação de tipos de conta a partir de dados estruturados
+- [x] Organização em camadas
+- [x] Menu de opções no terminal para interação com o usuário
+- [x] Boas práticas com `TypeScript`, incluindo tipagem e estruturação clara
 
 ---
 
@@ -46,8 +53,14 @@ Este repositório é focado em **aprendizado e prática** e é atualizado consta
 ```plaintext
 📁 bank-account-generation-project
 ├── 📁 src
+│   ├── 📁 controller
+│   │   ├── 📄 AccountController.ts
 │   ├── 📁 models
 │   │   ├── 📄 Account.ts
+│   │   ├── 📄 CurrencyAccount.ts
+│   │   ├── 📄 SalvingAccount.ts
+│   ├── 📁 repository
+│   │   └── 📄 IAccountRepository.ts
 │   ├── 📁 utils
 │   │   └── 📄 about.ts
 │   │   └── 📄 dataTypesAccount.ts
