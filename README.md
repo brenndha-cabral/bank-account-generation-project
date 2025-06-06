@@ -1,6 +1,6 @@
 # 💳 Bank Account Generation Project
 
-Projeto em desenvolvimento contínuo com foco em lógica de programação, organização de dados, boas práticas em TypeScript e simulação de funcionalidades bancárias (como criação e manipulação de contas). Este repositório evoluirá conforme meu aprendizado em desenvolvimento back-end e estruturação de sistemas.
+Projeto em desenvolvimento contínuo com foco em lógica de programação, organização de dados, boas práticas em TypeScript e simulação de funcionalidades bancárias (como criação e manipulação de contas).
 
 ---
 
@@ -16,14 +16,7 @@ Construir, com TypeScript, um sistema de geração e gerenciamento de contas ban
 
 ---
 
-## 🚀 Próximos passos
-
-Este repositório é focado em **aprendizado e prática** e é atualizado constantemente e seu README é vivo, atualizado de acodo com os novos aprendizados de cada semana e conforme os requisitos do projeto forem disponibilizados.
-
----
-
-## 🛠 Tecnologias utilizadas (atualizadas)
-
+## 🛠 Tecnologias utilizadas
 - TypeScript
 - JavaScript
 - Node.js
