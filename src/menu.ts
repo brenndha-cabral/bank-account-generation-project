@@ -183,6 +183,16 @@ ${dataTypesAccount.map((type) => `${type.code} - ${type.description}`).join('\n'
             
             case 8:
                 console.log(`\n${operation.description}`);
+                console.log("Digite o número da conta de origem: ");
+                number = read.questionInt();
+
+                console.log("Digite o número da conta de destino: ");
+                destinyNumber = read.questionInt();
+
+                console.log("Digite o valor do depósito (R$): ");
+                value = read.questionFloat();
+
+                accounts.transfer(number, destinyNumber, value);
                 break;
             
             default:

@@ -88,7 +88,17 @@ export class AccountController implements IAccountRepository {
     }
     
     transfer(originNumber: number, destinationNumber: number, value: number): void {
-        throw new Error("Method not implemented.");
+        let originAccount = this.accountById(originNumber);
+        let destinyAccount = this.accountById(destinationNumber);
+
+        if (!!originAccount && !!destinyAccount) {
+            if (originAccount.withdraw(value) === true) {
+                destinyAccount.deposit(value);
+                console.log(`A transferência da conta número ${originNumber} para a conta número ${destinationNumber} foi realizada com sucesso!`);
+            }
+        } else {
+            console.log(`A conta número ${originNumber} e/ou a conta número ${destinationNumber} não foram encontradas!`);
+        }
     }
     
 }
